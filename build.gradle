@@ -1,0 +1,61 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.5.5'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'br.com.api'
+version = '0.0.1-SNAPSHOT'
+description = 'api'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+    // Spring Web: para criar APIs REST e aplicações web.
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Spring Data JPA: para facilitar o acesso a dados usando a Java Persistence API.
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Jakarta Bean Validation: para validar os dados de entrada nos DTOs (ex: @NotBlank, @Email).
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // Lombok: para reduzir código boilerplate (getters, setters, construtores, etc.).
+    // 'compileOnly' significa que é usado apenas durante a compilação.
+    compileOnly 'org.projectlombok:lombok'
+
+    // 'annotationProcessor' informa ao compilador para processar as anotações do Lombok.
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // Driver do MySQL: o conector JDBC para se comunicar com o banco de dados MySQL.
+    // 'runtimeOnly' significa que a dependência é necessária apenas em tempo de execução.
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // ADICIONAR: Dependência para Swagger (Springdoc OpenAPI) - Versão 2.5.0 é compatível com Spring Boot 3.x
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
+
+    // ADICIONAR: Banco de dados em memória H2
+    //runtimeOnly 'com.h2database:h2'
+
+    // Dependências para testes.
+    // Inclui bibliotecas como JUnit 5, Mockito e Spring Test.
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
