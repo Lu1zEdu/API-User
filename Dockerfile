@@ -10,7 +10,7 @@ RUN ./gradlew build --no-daemon
 
 FROM gradle:jdk21-alpine
 
-ENV JAR_FILE=safezone-1.0.0.jar
+ENV JAR_FILE=user-0.0.1-SNAPSHOT.jar
 WORKDIR /app
 COPY --from=builder /app/build/libs/*.jar app.jar
 EXPOSE 8080
