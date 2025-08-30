@@ -131,4 +131,5 @@ Abaixo estão os comandos essenciais para gerenciar o ciclo de vida da aplicaç�
 
 | Nome Completo        | RM      |
 | -------------------- | ------- |
-| `[Seu Nome Completo]` | `[Seu RM]` |
+| `Luiz Eduardo Da Silva Pinto` | `555213` |
+| `Guilherme Romanholi Santos` | `557462` |
