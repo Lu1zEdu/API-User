@@ -1,0 +1,36 @@
+# Define a versão do Docker Compose. '3.8' é uma versão moderna e estável.
+version: '3.8'
+
+# Define os serviços (containers) que queremos rodar.
+services:
+  # O nome do nosso serviço, pode ser qualquer um. Vamos chamá-lo de 'db-mysql'.
+  db-mysql:
+    # A imagem que queremos usar do Docker Hub. Usaremos a oficial do MySQL na versão 8.
+    image: mysql:8.0
+
+    # Define um nome para o container, para ficar mais fácil de identificá-lo.
+    container_name: mysql-test-db
+
+    # Reinicia o container automaticamente caso ele pare por algum motivo.
+    restart: always
+
+    # Mapeia a porta 3306 de DENTRO do container para a porta 3306 da SUA MÁQUINA.
+    # Formato: <porta-na-sua-maquina>:<porta-no-container>
+    ports:
+      - "3306:3306"
+
+    # Define as variáveis de ambiente necessárias para configurar o MySQL na primeira inicialização.
+    environment:
+      MYSQL_ROOT_PASSWORD: myrootpassword  # Senha para o superusuário 'root'.
+      MYSQL_DATABASE: test_db            # Cria um banco de dados inicial com este nome.
+      MYSQL_USER: testuser               # Cria um usuário com este nome.
+      MYSQL_PASSWORD: testpassword         # Define a senha para o usuário acima.
+
+    # Mapeia um volume para persistir os dados do banco.
+    # Se você remover o container, os dados em 'mysql-data' não serão perdidos.
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+# Define os volumes que o Docker vai gerenciar.
+volumes:
+  mysql-data:
