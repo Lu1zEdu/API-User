@@ -8,7 +8,7 @@ RUN chmod +x ./gradlew
 COPY src ./src
 RUN ./gradlew build --no-daemon
 
-FROM gradle:jdk21-alpine
+FROM eclipse-temurin:21-jre-jammy
 
 ENV JAR_FILE=user-0.0.1-SNAPSHOT.jar
 WORKDIR /app
