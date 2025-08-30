@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  # Serviço do Banco de Dados
+  db-mysql:
+    image: mysql:8.0
+    container_name: mysql-test-db
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    networks:
+      - app-network # Nome da rede
+    env_file:
+      - .env # Carrega as variáveis do arquivo .env
+    environment:
+      # Passa as variáveis para dentro do contêiner
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      # Verifica se o banco de dados está realmente pronto para aceitar conexões
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 20s
+      retries: 10
+
+  # Serviço da sua API Java
+  api-app:
+    build:
+      context: . # Constrói a imagem usando o Dockerfile na pasta atual
+      dockerfile: Dockerfile
+    container_name: api-test
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network # Conecta à mesma rede do banco
+    env_file:
+      - .env
+    environment:
+      # Passa as configurações de conexão para a aplicação Spring Boot
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: ${MYSQL_USER}
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD}
+    depends_on:
+      db-mysql:
+        # Garante que a API só vai iniciar DEPOIS que o healthcheck do banco estiver OK
+        condition: service_healthy
+    restart: unless-stopped
+
+# Define a rede que os contêineres usarão para se comunicar
+networks:
+  app-network:
+
+# Define o volume para persistir os dados do banco
+volumes:
+  mysql-data:
