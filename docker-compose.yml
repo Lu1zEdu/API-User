@@ -7,7 +7,7 @@ services:
     container_name: mysql-test-db
     restart: unless-stopped
     ports:
-      - "3306:3306"
+      - "3307:3306"
     networks:
       - app-network # Nome da rede
     env_file:
