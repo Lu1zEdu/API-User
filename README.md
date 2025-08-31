@@ -19,13 +19,14 @@ A aplicação operava em um modelo tradicional, com o backend e o banco de dados
 
 ![Arquitetura Atual](images/arquitetura_atual.png)
 
+<!--
 ### Arquitetura Futura (Após a Migração)
 
 A nova arquitetura utiliza Docker Compose para orquestrar os serviços da aplicação e do banco de dados em contêineres isolados.
 Isso garante ambientes padronizados, escalabilidade e um processo de deploy contínuo e confiável.
 
 `[Inserir aqui o desenho da sua arquitetura nova com Docker]`
-
+-->
 ## 3. Tecnologias Utilizadas
 
 * **Backend:** Java 21, Spring Boot 3
