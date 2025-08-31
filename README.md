@@ -17,7 +17,7 @@ Conforme solicitado, abaixo estão os diagramas que representam a arquitetura do
 
 A aplicação operava em um modelo tradicional, com o backend e o banco de dados instalados e configurados diretamente em um servidor dedicado, levando a um processo de deploy manual e demorado.
 
-`[Inserir aqui o desenho da sua arquitetura antiga]`
+![Arquitetura Atual](images/arquitetura_atual.png)
 
 ### Arquitetura Futura (Após a Migração)
 
@@ -129,7 +129,7 @@ Abaixo estão os comandos essenciais para gerenciar o ciclo de vida da aplicaç�
 
 ## 8. Equipe
 
-| Nome Completo        | RM      |
-| -------------------- | ------- |
+| Nome Completo                 | RM       |
+| ----------------------------- | -------- |
 | `Luiz Eduardo Da Silva Pinto` | `555213` |
-| `Guilherme Romanholi Santos` | `557462` |
+| `Guilherme Romanholi Santos`  | `557462` |
