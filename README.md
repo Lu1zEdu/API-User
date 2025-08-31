@@ -86,7 +86,7 @@ Você deverá ver o serviço da aplicação e do banco de dados com o status "Up
 A aplicação estará disponível no seu navegador ou cliente de API no seguinte endereço:
 
 * **API:** `http://20.195.170.11`
-* **Documentação (Swagger):** `http://20.195.170.11:8080/swagger-ui.html`
+* **Documentação (Swagger):** `http://20.195.170.11:8081/swagger-ui.html`
 
 ## 6. Comandos Essenciais do Docker Compose
 
