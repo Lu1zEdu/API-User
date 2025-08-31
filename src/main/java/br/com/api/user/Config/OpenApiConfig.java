@@ -33,7 +33,6 @@ public class OpenApiConfig {
                         .version("v1.0.0")
                         .contact(new Contact()
                                 .name("Luiz Eduardo e Guilherme Romanholi")
-                                .email("RM555213@fiap.com.br")
                                 .url("https://github.com/Lu1zEdu/API-User")
                         )
                 );
